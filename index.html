@@ -3,24 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TransferHub - Rececionista (Novo Projeto)</title>
+    <title>TransferHub - Rececionista</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        /* CSS Básico - Vamos melhorar isto mais tarde! */
-        body { font-family: sans-serif; margin: 20px; }
-        h1 { color: #2ecc71; }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        /* CSS Básico para o Formulário */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 650px; margin: 40px auto; background-color: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+        h1 { color: #2ecc71; text-align: center; margin-bottom: 30px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
+        input[type="text"], input[type="datetime-local"], input[type="number"], input[type="submit"] {
+            width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #2ecc71; color: white; border: none; cursor: pointer; transition: background-color 0.3s; font-weight: bold;
+        }
+        input[type="submit"]:hover { background-color: #27ae60; }
+        .form-group { margin-bottom: 20px; }
+        .info { text-align: center; margin-bottom: 25px; color: #7f8c8d; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>TransferHub Rececionista</h1>
-        <p>Esta é a base do seu novo projeto limpo. Agora vamos reconstruir o formulário.</p>
+        <h1>Novo Pedido de Transfer</h1>
 
+        <div class="info">
+            Hotel Ativo: **Porto Centro** | ID Utilizador: **REC-101**
         </div>
 
+        <form id="transferForm">
+            <div class="form-group">
+                <label for="clientName">Nome do Cliente:</label>
+                <input type="text" id="clientName" placeholder="Ex: João Silva" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dateTime">Data & Hora:</label>
+                <input type="datetime-local" id="dateTime" required>
+            </div>
+
+            <div class="form-group">
+                <label for="pickupLocation">Local de Pick-up:</label>
+                <input type="text" id="pickupLocation" placeholder="Ex: Hotel Infante Sagres, Porto" required>
+            </div>
+
+            <div class="form-group">
+                <label for="destination">Destino:</label>
+                <input type="text" id="destination" placeholder="Ex: Aeroporto do Porto" required>
+            </div>
+
+            <div class="form-group">
+                <label for="passengers">Nº de Passageiros:</label>
+                <input type="number" id="passengers" value="1" min="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Preço Acordado (€):</label>
+                <input type="number" id="price" step="0.01" placeholder="Ex: 35.00" required>
+            </div>
+
+            <input type="submit" value="Criar Pedido de Transfer">
+        </form>
+
+        <p id="message" style="text-align: center; margin-top: 20px; font-weight: bold;"></p>
+    </div>
+
     <script>
-        console.log("A sua nova App Rececionista está online e pronta!");
-        // Em seguida, vamos colocar aqui as chaves Supabase e o código.
+        // Agora o formulário está pronto. No próximo passo, vamos ligá-lo ao Supabase.
     </script>
 </body>
 </html>
